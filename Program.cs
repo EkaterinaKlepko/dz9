@@ -19,31 +19,38 @@
 // Задайте значения M и N. Напишите программу, 
 // которая найдёт сумму натуральных элементов в промежутке от M до N.
 
-Console.WriteLine("Введите целое число");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите большее целое число");
-int n = Convert.ToInt32(Console.ReadLine());
-// Console.WriteLine($"Сумма всех чисел от {m} до {n} равна {Summa(n, m)}");
-Console.WriteLine($"Сумма всех чисел от {m} до {n} равна {SummaRec(n, m)}");
 
+// Console.WriteLine("Введите целое число");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Введите большее целое число");
+// int n = Convert.ToInt32(Console.ReadLine());
+// SummaRec(m, n);
+// Console.WriteLine($"Сумма всех чисел от {m} до {n}: {SummaRec(n, m)}");
 
-// int Summa(int n, int m)
-// {
-//     int sum = m + 1;
-//     while (true)
-//     {
-//         if (m == n)
-//             break;
-//         sum = sum + 1;
-//         m++;
-//     }
-//     return sum;
+// int SummaRec(int m, int n)
+// {   
+//     if (m > n) return SummaRec(n, m);
+//     if (n==m) return m;
+//     return n + SummaRec(m, n - 1);
 // }
 
-int SummaRec(int n, int m)
+// Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+
+Console.WriteLine("Введите неотрицательное число");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите неотрицательное число");
+int m = Convert.ToInt32(Console.ReadLine());
+Akkerman(n, m);
+Console.WriteLine(Akkerman(n, m));
+
+int Akkerman(int n, int m)
 {
-    if (m==n) return 0;
-    return m + SummaRec(n - 1, m);
-    //SummaRec(5)
-    //return 5 + ( 4 + (3 + ( 1 + 0)))
+    if (n == 0)
+        return m + 1;
+    else
+      if ((n != 0) && (m == 0))
+        return Akkerman(n - 1, 1);
+    else
+        return Akkerman(n - 1, Akkerman(n, m - 1));
 }
